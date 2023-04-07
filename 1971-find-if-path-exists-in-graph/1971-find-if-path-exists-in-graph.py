@@ -34,8 +34,10 @@ class UnionFind:
         self.root = list(range(n))
         self.rank = [1] * n
     def find(self, x):
+        temp = x
         while self.root[x] != x:
-            self.root[x], x = self.root[self.root[x]], self.root[x]
+            x = self.root[x]
+        self.root[temp] = x
         return x
     
     def union(self, x, y):
