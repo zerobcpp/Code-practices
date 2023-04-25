@@ -1,7 +1,7 @@
 def convertToBase7(n):
     if n < 0: return '-' + convertToBase7(-n)
-    if n < 16: return str(n)
-    return convertToBase7(n // 16) + str(n % 16)
+    if n < 8: return str(n)
+    return convertToBase7(n // 8) + str(n % 8)
 
 
 
