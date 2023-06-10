@@ -35,7 +35,7 @@ class Solution:
                 if not goal:
                     res.append(-1.0)
         return res
-
+    
     def calcEquationDSU(self, equ, val, query):
         uf = DSU()
         for (u, v), q in zip(equ, val):
