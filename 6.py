@@ -1,14 +1,9 @@
-# 6. Zigzag Conversion
-
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         strs = [[] for i in range(numRows)]
         alt = False
         count = 0
         for i in s:
-            if numRows == 1:
-                strs[count].append(i)
-                continue
             if count == numRows - 1 or count == 0:
                 alt = not alt
             strs[count].append(i)

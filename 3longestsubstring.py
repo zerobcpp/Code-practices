@@ -14,12 +14,24 @@ class Solution:
             right += 1
         return count
 
-    def lengthOfLongestSubver2(self, s):
-        char = [0] * 127
-        lf = rt = 0
-        smap = [ord(i) - ord('a') for i in s]
-        print(smap)
-        return 0
+
+    
+    
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        res = 0
+        c = set()
+        
+        n = len(s)
+        l = 0 
+        for r in range(n):
+            while s[r] in c:
+                c.remove(s[l])
+                l += 1
+            
+            c.add(s[r])
+            res = max(res, len(c))
+    
+        return res
 
 if __name__ == '__main__':
     print(Solution.lengthOfLongestSubstring(self = None, s = "abcabcbb"))

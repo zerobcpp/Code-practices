@@ -1,4 +1,3 @@
-# 102. Binary Tree Level Order Traversal
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -12,19 +11,19 @@ class Solution:
             return []
         res = []
         queue = deque([root])
-
+        
         while queue:
             size = len(queue)
             inner = []
             for i in range(size):
                 curr = queue.popleft()
-
+                
                 if curr.left:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-
+                
                 inner.append(curr.val)
             res.append(inner)
-
+        
         return res

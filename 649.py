@@ -1,10 +1,7 @@
-# 649. Dota2 Senate
-
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        n = len(senate)
-        r = deque()
-        d = deque()
+        r = []
+        d = []
         for i, v in enumerate(senate):
             if v == 'R':
                 r.append(i)
@@ -12,13 +9,13 @@ class Solution:
                 d.append(i)
         
         while r and d:
-            ridx = r.popleft()
-            didx = d.popleft()
+            ridx = r.pop()
+            didx = d.pop()
             
             if ridx < didx:
-                r.append(ridx + n)
+                r.append(ridx + 1)
             else:
-                d.append(didx + n)
+                d.append(didx + 1)
         
         return 'Radiant' if r else 'Dire'
             

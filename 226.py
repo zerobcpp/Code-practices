@@ -1,4 +1,3 @@
-# 226 invert binary tree
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -14,15 +13,4 @@ class Solution:
                 stack.append(x.left)
                 stack.append(x.right)
                 x.left, x.right = x.right, x.left 
-        return root
-    
-    
-    def invertTree(self, root):
-        def helper(node):
-            if not node:
-                return
-            node.left, node.right = node.right, node.left
-            helper(node.left)
-            helper(node.right)
-        helper(root)
         return root

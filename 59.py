@@ -1,10 +1,8 @@
-# 59. Spiral Matrix II
-
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
         mat = [[0] * n for i in range(n)]
         count = 1
-        m = n
+        m = 3
         r, c = 0, -1
         direction = 1
         while n * m > 0:

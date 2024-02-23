@@ -1,5 +1,3 @@
-# 73. Set Matrix Zeroes
-
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
@@ -12,7 +10,7 @@ class Solution:
             for j in range(m):
                 if matrix[i][j] == 0:
                     st.append((i, j))
-
+        
         while st:
             x, y = st.pop()
             for i in range(n):
@@ -21,5 +19,5 @@ class Solution:
                         matrix[i][j] = 0
                     elif j == y:
                         matrix[i][j] = 0
-
+            
         return None

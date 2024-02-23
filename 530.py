@@ -1,18 +1,20 @@
-# 530. Minimum Absolute Difference in BST
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         res = 10 ** 5 + 1
-        prev = None
+        
         def helper(node):
-            nonlocal res, prev
-            if not node:
-                return
-            helper(node.left)
-            if prev:
-                res = min(res, abs(node.val - prev.val))
-            prev = node
-            helper(node.right)
-            
+            nonlocal res
+            if node.left:
+                res = min(res, abs(node.val - node.left.val))
+                helper(node.left)
+            if node.right:
+                res = min(res, abs(node.val - node.right.val))
+                helper(node.right)
         helper(root)
         return res

@@ -1,18 +1,14 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
-
-        st = []
-        c = {')': '(', ']': '[', '}': '{'}
-
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        collection = []
         for i in s:
-            if i in ['(', '{', '[']:
-                st.append(i)
-            else:
-                if not st:
-                    return False
-                check = c[i]
-                if check != st[-1]:
-                    return False
-                st.pop()
+            if i in "{([":
+                collection.append(i)
 
-        return True if len(st) == 0 else False
+            if i in "})]":
+                a = collection.pop()
+                return (a == "(" and i == ")") or (a == "{" and i == "}") or (a == "{" and i == "}")

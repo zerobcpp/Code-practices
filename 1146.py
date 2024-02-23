@@ -1,31 +1,11 @@
-# 1146. Snapshot Array
-
-class SnapshotArray:
-
-    def __init__(self, length: int):
-        self.arr = [[(0, 0)] for i in range(length)]
-        self.n = 0
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        if str1 + str2 != str2 + str1:
+            return None
+        def gcd(a, b):
+            if b == 0:
+                return a
+            return gcd(b, a % b)
         
-        
-
-    def set(self, index: int, val: int) -> None:
-        self.arr[index].append((self.n, val))
-        #print(self.arr)
-        
-
-    def snap(self) -> int:
-        ret = self.n
-        self.n += 1
-        return ret
-
-    def get(self, index: int, snap_id: int) -> int:
-        idx = bisect_right(self.arr[index], (snap_id, float('inf')))
-        #print(idx)
-        return self.arr[index][idx-1][1]
-
-
-# Your SnapshotArray object will be instantiated and called as such:
-# obj = SnapshotArray(length)
-# obj.set(index,val)
-# param_2 = obj.snap()
-# param_3 = obj.get(index,snap_id)
+        n = gcd(len(str1), len(str2))
+        return str1[:n]

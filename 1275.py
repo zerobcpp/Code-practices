@@ -1,32 +1,32 @@
-# 1275. Find Winner on a Tic Tac Toe Game
-
 class Solution:
-    def tictactoe(self, moves: List[List[int]]) -> str:
-        row = [0] * 3
-        col = [0] * 3
-        diag = 0
-        rdiag = 0
+    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+        graph = {i : [] for i in range(n)}
         
-        cnt = 0
-        for i, j in moves:
-            if cnt == 0:
-                player = 1
-            else:
-                player = -1
-
-            row[i] += player
-            col[j] += player
-            if i == j:
-                diag += player
-            if i == 2-j:  
-                rdiag += player
-            cnt += 1
-            cnt %= 2
         
-        #print(diag, rdiag, row, col)
-        if any(cand == 3 for cand in [row[i], col[j], diag, rdiag]):
-            return 'A'
-        if any(cand == -3 for cand in [row[i], col[j], diag, rdiag]):
-            return 'B'
+        for i, (lc, rc) in enumerate(zip(leftChild, rightChild)):
+            if lc != -1:
+                graph[lc].append(i)
+            if rc != -1:
+                graph[rc].append(i)
         
-        return 'Draw' if len(moves) == 9 else 'Pending'
+        st = []
+        for i, v in graph.items():
+            if graph[i] == []:
+                st.append(i)
+                break
+        seen = set([0])
+        while st:
+            cur = st.pop()
+            
+            for neigh in [leftChild[cur], rightChild[cur]]:
+                if neigh in seen:
+                    return False
+                elif neigh not in seen and neigh != -1:
+                    seen.add(neigh)
+                    st.append(neigh)
+        
+        
+        return len(seen) == n
+                        
+        
+        
