@@ -2,9 +2,9 @@ class Solution:
     def maximumScore(self, nums: List[int], k: int) -> int:
         n = len(nums)
         mid = n //2
-        left = right = mid
-        ans = nums[mid]
-        curr_min = nums[mid]
+        left = right = k
+        ans = nums[k]
+        curr_min = nums[k]
         
         while left > 0 or right < n - 1:
             if (nums[left - 1] if left else 0) < (nums[right + 1] if right < n - 1 else 0):

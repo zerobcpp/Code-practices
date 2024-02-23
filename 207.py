@@ -1,19 +1,27 @@
-class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        course = [0 for i in range(numCourses)]
-        neighbor = [[] for i in range(numCourses)]
-        for cur, pre in prerequisites:
-            course[cur] += 1
-            neighbor[pre].append(cur)
+class Solution(object):
+    def canFinish(self, n, pre):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+        g = {i : [] for i in range(n)}
+        adj = [0] * n
+        for u, v in pre:
+            g[v].append(u)
+            adj[u] += 1
         
-        stack = [i for i in range(numCourses) if i == 0]
+        st = [i for i in range(n) if not adj[i]]
+        
         res = []
-        while stack:
-            start = stack.pop()
-            res.append(start)
-            for n in neighbor[start]:
-                course[n] -= 1
-                if not course[n]:
-                    stack.append(n)
+        while st:
+            cur = st.pop()
+            res.append(cur)
+            
+            for neigh in g[cur]:
+                adj[neigh] -= 1
+                if not adj[neigh]:
+                    st.append(neigh)
         
-        return len(res) == numCourses
+        return len(res) == n
+            

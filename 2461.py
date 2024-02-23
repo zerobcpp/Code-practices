@@ -6,25 +6,36 @@
 #         self.right = right
 class Solution:
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        st = [(root, None)]
         graph = defaultdict(list)
+        while st:
+            cur, parent = st.pop()
+            if parent:
+                graph[cur.val].append(parent.val)
+                graph[parent.val].append(cur.val)
+            for child in [cur.left, cur.right]:
+                if child:
+                    st.append((child, cur))
+        #print(graph)
+                
         
-        def helper(node):
-            if not node:
-                return
-            cur = node.val
-            if node.left:
-                left = node.left.val
-                graph[cur].append(left)
-                graph[left].append(cur)
-            if node.right:
-                right = node.right.val
-                graph[cur].append(right)
-                graph[right].append(cur)
+#         def helper(node):
+#             if not node:
+#                 return
+#             cur = node.val
+#             if node.left:
+#                 left = node.left.val
+#                 graph[cur].append(left)
+#                 graph[left].append(cur)
+#             if node.right:
+#                 right = node.right.val
+#                 graph[cur].append(right)
+#                 graph[right].append(cur)
             
-            helper(node.left)
-            helper(node.right)
+#             helper(node.left)
+#             helper(node.right)
             
-        helper(root)
+        #helper(root)
         #print(graph)
         seen = set()
         seen.add(start)
@@ -32,7 +43,7 @@ class Solution:
         res = 0
         while st:
             cur, level = st.popleft()
-            res = max(res, level)
+            res = level
             
             for neigh in graph[cur]:
                 if neigh not in seen:

@@ -1,21 +1,23 @@
 class Solution {
 public:
     int largestVariance(string s) {
-        unordered_map<char, int> c;
+        map<char, int> c;
         for(char i : s){
             c[i] += 1;
         }
         
         int res = 0;
-        for (auto [i, v1] : c){
+        for (auto &i : c){
             for (auto [j, v2] : c){
-                if (i == j)
+                if (i.first == j)
                     continue;
                 int diff = 0;
                 bool isJ = false;
                 int jcnt = v2;
                 for (char k : s){
-                    if (k == i)
+                    if(k != i.first and k != j)
+                        continue;
+                    if (k == i.first)
                         diff ++;
                     else if (k == j){
                         diff --;
@@ -26,6 +28,7 @@ public:
                             diff = 0;
                         }
                     }
+                    //cout << i.first << j << diff << endl;
                     if(isJ)
                         res = max(res, diff);
                 }

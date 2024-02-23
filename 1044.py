@@ -4,6 +4,6 @@ class Solution:
         words.pop(0)
         for i in words:
             c1 = Counter(list(i))
-            update = list((c&c1).elements())
-        return update
+            c &= c1
+        return list(c.elements())
         

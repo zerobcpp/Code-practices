@@ -9,7 +9,7 @@ class Solution:
                 if s1[i] != s2[i]:
                     cnt += 1
             
-            return cnt == 1 or cnt == 2
+            return cnt == 0 or cnt == 2
         def helper(node):
             st = [node]
             seen.add(node)
@@ -19,6 +19,7 @@ class Solution:
                 for neigh in graph[cur]:
                     if neigh not in seen:
                         st.append(neigh)
+                        
                         
             return
                     
@@ -34,7 +35,7 @@ class Solution:
         for i in range(N):
             if i not in seen:
                 helper(i)
-                print(seen, i)
+                #print(seen, i)
                 res += 1
         
         return res 

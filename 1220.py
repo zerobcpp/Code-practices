@@ -1,6 +1,6 @@
 class Solution:
-    def smallestSufficientTeam(self, req_skills: List[str], people: List[List[str]]) -> List[int]:
-#         c = Counter(req_skills)
+#     def smallestSufficientTeam(self, req_skills: List[str], people: List[List[str]]) -> List[int]:
+#          c = Counter(req_skills)
 #         N = len(people)
 #         res = []
 #         def helper(i, cur):
@@ -29,8 +29,7 @@ class Solution:
         
 #         return helper(0, c)
                 
-    def smallestSufficientTeam(self, req_skills: List[str],
-                               people: List[List[str]]) -> List[int]:
+    def smallestSufficientTeam(self, req_skills: List[str],people: List[List[str]]) -> List[int]:
         n = len(people)
         m = len(req_skills)
         skill_id = dict()

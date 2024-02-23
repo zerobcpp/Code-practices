@@ -7,8 +7,16 @@ class Solution:
         
         for i in range(N):
             for j in range(i):
-                if nums[i] % nums[j] == 0:
-                    dp[i].append(nums[j])
+                if nums[i] % nums[j] == 0 and len(dp[i]) < len(dp[j]) + 1:
+                    dp[i] = dp[j] + [nums[i]]
+            
         
-        print(dp)
         return max(dp, key = len)
+#         res = []
+        
+#         for i in dp:
+#             if len(res) < len(i):
+#                 res = i
+        
+#         return res
+        

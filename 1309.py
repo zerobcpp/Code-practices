@@ -8,8 +8,8 @@ class Solution:
                 group_id += 1
                 
         adj_item = [0] * n
-        adj_group = [0] * (group_id+1)
-        g_graph = {i:[] for i in range(group_id+1)}
+        adj_group = [0] * (group_id)
+        g_graph = {i:[] for i in range(group_id)}
         i_graph = {i:[] for i in range(n)}
         #print(group)
         for i in range(n):
@@ -32,7 +32,6 @@ class Solution:
             while st:
                 cur = st.pop()
                 res.append(cur)
-                
                 for neigh in graph[cur]:
                     adj[neigh] -= 1
                     if adj[neigh] == 0:
@@ -53,8 +52,8 @@ class Solution:
             c[key].append(i)
         
         res = []
-        #print(c)
-        for i, v in c.items():
-            res.extend(v)
+        
+        for g in gp:
+            res += c[g]
         
         return res

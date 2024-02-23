@@ -1,9 +1,19 @@
 class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
         N = len(nums)
-        
-        for i in range(1, N-2):
+        dec = True
+        inc = True
+        for i in range(1, N):
             if nums[i-1] > nums[i]:
-                return False
+                inc = False
         
-        return True
+        for i in range(1, N):
+            if nums[i-1] < nums[i]:
+                dec = False
+        
+        #print(inc, dec)
+        
+        return (inc or dec)
+        
+        
+    

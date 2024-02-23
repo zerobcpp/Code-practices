@@ -21,9 +21,9 @@ class Solution:
         travel = [0] + travel
         T = []
         for i in range(N):
-            
             m = p = g = 0
             for t in garbage[i]:
+                
                 if t == 'M':
                     m += 1
                     mi = i
@@ -39,16 +39,17 @@ class Solution:
             T.append((mp, pp, gp))
         
         #print(mi, pi, gi)
+        #print(T)
         res = 0
-        if pi:
+        if pi != None:
             res += T[pi][1]
-        if gi:
+        if gi != None:
             res += T[gi][2]
-        if mi:
+        if mi != None:
             res += T[mi][0]
         
         return res
                 
             
                 
-           
+           # metal, paper, glasss

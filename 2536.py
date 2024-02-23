@@ -9,9 +9,9 @@ class Solution:
         e2s = int(e2s[0]) * 60 + int(e2s[1])
         e2e = int(e2e[0]) * 60 + int(e2e[1])
         
-        if e2s >= e1s and e2s <= e1e:
+        print(e1s, e1e, e2s, e2e)
+        if e1s <= e2e and e2s <= e1e:
             return 1
         return 0
-        
         
         

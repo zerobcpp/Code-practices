@@ -14,18 +14,17 @@ class Solution:
         :type root: TreeLinkNode
         :rtype: nothing
         """
-        if not root:
-            return None
         
-        curr = root
-        reset = root.left
+        if not root or not root.left:
+            return root
         
-        while curr.left:
-            curr.left.next = curr.right
-            if curr.next:
-                curr.right.next = curr.next.left 
-                curr = curr.next
-            else:
-                curr = reset
-                reset = curr.left
+        left = root.left
+        right = root.right
+        left.next = right
+        
+        if root.next:
+            right.next = root.next.left
+        self.connect(root.left)
+        self.connect(root.right)
+        
         return root

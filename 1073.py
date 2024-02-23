@@ -11,7 +11,6 @@ class Solution:
             oob = False
             while st:
                 x, y = st.pop()
-
                 count += 1
                 for dx, dy in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
                     if dx < 0 or dx >= n or dy < 0 or dy >= m:
@@ -25,7 +24,21 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 if grid[i][j] == 1 and (i, j) not in seen:
-                    res = max(res, dfs(i, j))
+                    res += dfs(i, j)
         
         return res
         
+
+
+'''
+[0,0,0,1,1,1,0,1,0,0],
+[1,1,0,0,0,1,0,1,1,1],
+[0,0,0,1,1,1,0,1,0,0],
+[0,1,1,0,0,0,1,0,1,0],
+[0,1,1,1,1,1,0,0,1,0],
+[0,0,1,0,1,1,1,1,0,1],
+[0,1,1,0,0,0,1,1,1,1],
+[0,0,1,0,0,1,0,1,0,1],
+[1,0,1,0,1,1,0,0,0,0],
+[0,0,0,0,1,1,0,0,0,1]]
+'''

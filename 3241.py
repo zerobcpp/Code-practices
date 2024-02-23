@@ -9,6 +9,7 @@ class Solution:
             temp = []
             r = l
             safe = True
+            
             while r < l + 3 and r < N:
                 if nums[r] - nums[l] > k:
                     safe = False
@@ -22,6 +23,27 @@ class Solution:
                 return []
             l += 3
         
-        print(res)
+        #print(res)
+        
+        return res
+    
+    
+    def divideArray(self, nums, k):
+        nums.sort()
+        l = 0
+        N = len(nums)
+        res = []
+        
+        while l < N:
+            safe = True
+            
+            if nums[l+2] - nums[l] > k:
+                safe = False
+            
+            if safe:
+                res.append([nums[l], nums[l+1], nums[l+2]])
+            else:
+                return []
+            l += 3
         
         return res

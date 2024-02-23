@@ -9,3 +9,12 @@ class Solution:
             s.add(v)
         
         return True
+    
+    
+    def uniqueOccurrences(self, arr):
+        c = Counter(arr)
+        s = set(list(c.values()))
+        
+        
+        
+        return len(s) == len(c)

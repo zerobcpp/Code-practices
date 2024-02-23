@@ -14,3 +14,14 @@ class Solution:
                 stack.append(x.right)
                 x.left, x.right = x.right, x.left 
         return root
+    
+    
+    def invertTree(self, root):
+        def helper(node):
+            if not node:
+                return
+            node.left, node.right = node.right, node.left
+            helper(node.left)
+            helper(node.right)
+        helper(root)
+        return root

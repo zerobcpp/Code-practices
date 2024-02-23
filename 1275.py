@@ -14,7 +14,7 @@ class Solution:
             if graph[i] == []:
                 st.append(i)
                 break
-        seen = set([0])
+        seen = set(st)
         while st:
             cur = st.pop()
             

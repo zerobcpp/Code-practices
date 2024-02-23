@@ -1,20 +1,12 @@
 class Solution(object):
     def reverse(self, x):
-        """
-        :type x: int
-        :rtype: int
-        """
-        a = str(x)[::-1]
-        b = ""
-        negative = False
-        for i in a:
-            if i == "-":
-                negative = True
-            elif i == "0":
-                continue
-            else:
-                b += i
+        intToString = str(x)
+        if x < 0:
+            reversedInt = int('-' + intToString.replace('-', ' ')[::-1])
+        else:
+            reversedInt = int(intToString[::-1])
 
-        if negative:
-            return -int(b)
-        return int(b)
+        if abs(reversedInt) < 2 ** 31 and reversedInt > -2 ** 31 - 1:
+            return reversedInt
+        else:
+            return 0

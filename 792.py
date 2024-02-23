@@ -1,14 +1,22 @@
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        left = 0
-        right = len(nums) - 1
-        while left <= right:
-            mid = (left + right) // 2
-            if nums[mid] == target:
-                return mid
-            if target < nums[mid]:
-                right = mid - 1
+    def search1(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            m = l + (r - l) // 2
+            if nums[m] == target:
+                return m
+            if nums[m] > target:
+                r = m - 1
             else:
-                left = mid + 1
-        return -1 
+                l = m + 1
+            
         
+        return -1
+
+    def search(self, nums, target):
+        l = bisect_left(nums, target)
+        if l > len(nums)-1:
+            return -1
+        if nums[l] == target:
+            return l
+        return -1

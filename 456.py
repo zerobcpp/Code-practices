@@ -3,9 +3,9 @@ class Solution:
         res = []
         
         two = -float('inf')
-        for i in nums:
+        for i in nums[::-1]:
             
-            if i < two:
+            if i < two and res:
                 return True
             while res and res[-1] < i:
                 two = res.pop()

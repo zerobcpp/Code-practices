@@ -18,3 +18,20 @@ class Solution:
             ptr += 1
         
         return res
+    
+    
+    def rearrangeArray(self, nums):
+        l = 0
+        res = []
+        N = len(nums)
+        
+        for r in range(N):
+            if nums[r] > 0:
+                while nums[l] > 0:
+                    l += 1
+                res.append(nums[r])
+                res.append(nums[l])
+                l += 1
+        
+        return res
+            

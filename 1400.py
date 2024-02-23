@@ -21,11 +21,10 @@ class Solution:
             cnt += 1
             cnt %= 2
         
-        print(diag, rdiag, row, col)
+        #print(diag, rdiag, row, col)
         if any(cand == 3 for cand in [row[i], col[j], diag, rdiag]):
             return 'A'
         if any(cand == -3 for cand in [row[i], col[j], diag, rdiag]):
             return 'B'
         
-        if len(moves) == 9:
-            return 'Draw'
+        return 'Draw' if len(moves) == 9 else 'Pending'

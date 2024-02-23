@@ -24,5 +24,5 @@ class Solution:
         for k in vowels:
             res += helper(k, n-1) % MOD
         
-        return res
+        return res % MOD
     

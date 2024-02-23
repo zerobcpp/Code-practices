@@ -4,21 +4,23 @@ class Solution:
         l = r = 0
         sm = sum(nums)
         target = sm - x
-        
+        #nums.sort()
         cur = 0
-        res = float('inf')
+        res = -float('inf')
         #print(target, sm)
+        
         for r in range(N):
             cur += nums[r]
             #print(cur)
-            while cur > target:
+            while cur > target and l <= r:
                 cur -= nums[l]
                 l += 1
             if cur == target:
-                res = min(res, r - l + 1)
+         #       print(l, r)
+                res = max(res, r - l + 1)
             
             
             
             
         
-        return res if res != float('inf') else -1
+        return N - res if res != -float('inf') else -1

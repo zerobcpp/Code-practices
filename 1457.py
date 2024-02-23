@@ -6,9 +6,9 @@ class Solution:
         
         @cache
         def helper(i, left, d):
-            if i >= N and left <= 0:
+            if i >= N and left == 0:
                 return 0
-            if i >= N or left < 0:
+            if i >= N or left <= 0:
                 return float('inf')
             
             mx = max(d, job[i])

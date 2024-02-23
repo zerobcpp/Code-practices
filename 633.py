@@ -1,13 +1,18 @@
-class Solution(object):
+class Solution:
     def judgeSquareSum(self, c):
-        """
-        :type c: int
-        :rtype: bool
-        """
-        upper = int(c ** 0.5) + 1
+        l, r = 0, int(c**0.5) + 1
         
-        for i in range(upper):
-            for j in range(i+1, upper):
-                if i*i + j*j == c:
-                    return True
+        while l <=  r:
+            mid = l + (r-l) // 2
+            power = l * l + r * r
+            #print(mid, power)
+            if power == c:
+                return True
+            if power < c:
+                l += 1
+            else:
+                r -= 1
+        
         return False
+            
+            

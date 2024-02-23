@@ -4,10 +4,10 @@ class Solution:
         for i in stones:
             heapq.heappush(heap, -i)
         
-        while len(heap) > 2:
+        while len(heap) >= 2:
             s1 = heapq.heappop(heap)
             s2 = heapq.heappop(heap)
             if s1 != s2:
-                heapq.heappush(heap, s2 - s1)
+                heapq.heappush(heap, s1 - s2)
         
         return -heap[0] if heap else 0

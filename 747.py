@@ -6,6 +6,6 @@ class Solution:
         
         for i in range(2, stair):
             res[i] = cost[i] + min(res[i-1], res[i-2])
-        print(res)
+        #print(res)
         
         return res[-2] if res[-2] < res [-1] else res[-1]

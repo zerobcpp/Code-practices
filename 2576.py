@@ -16,7 +16,7 @@ class Solution:
                 
             if mn < mx:
                 #print('here')
-                res = i
+                res = i + 1
                 mn = mx
         
-        return res + 1
+        return res

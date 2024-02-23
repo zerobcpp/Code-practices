@@ -4,7 +4,7 @@ class Solution:
         l = 0
         r = 0
         while r < n:
-            
+            chars[l] = chars[r]
             count = 1
             while r + 1< n and chars[r] == chars[r+1]:
                 count += 1
@@ -14,6 +14,7 @@ class Solution:
                 for i in str(count):
                     chars[l+1] = i
                     l += 1
+                    
             
             l += 1
             r += 1

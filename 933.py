@@ -28,6 +28,27 @@ class Solution:
             cur = cur.right
         
         return dummy.right
-            
+    
+    
+    def increasingBST(self, root): 
+        if not root:
+            return 
+        dummy = prev = TreeNode(-1)
         
-            
+        while root:
+            if root.left:
+                temp = root.left
+                while temp.right:
+                    temp = temp.right
+
+                temp.right = root
+                left = root.left
+                root.left = None
+                root = left
+            else:
+                prev.right = root
+                prev = prev.right
+                root = root.right
+        
+        #print(dummy)
+        return dummy.right

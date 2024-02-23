@@ -2,11 +2,15 @@ class Solution:
     def minTaps(self, n: int, ranges: List[int]) -> int:
         res = -1
         N = len(ranges)
-        for i in range(N):
-            neg = i - ranges[i]
-            pos = i + ranges[i]
-            if neg <= 0 and pos >= n:
-                res = i
-                break
+        dp = [float('inf')] * N
+        dp[0] = 0
         
-        return res
+        for i in range(N):
+            neg = max(0, i - ranges[i])
+            pos = min(i + ranges[i], n)
+            
+            for j in range(neg, pos+1):
+                dp[pos] = min(dp[j]+1, dp[pos])
+        
+        print(dp)
+        return dp[-1] if dp[-1] != float('inf') else -1

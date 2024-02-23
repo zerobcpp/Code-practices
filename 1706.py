@@ -6,7 +6,7 @@ class Solution:
         res = 0
         N = len(points)
         while st:
-            n, w = heappop(st)
+            w, n = heappop(st)
             
             if n in seen:
                 continue
@@ -23,7 +23,7 @@ class Solution:
                     dist = abs(x-dx) + abs(y - dy)
                     
                     if dist < graph.get(i, float('inf')):
-                        heappush(st, (i, dist))
+                        heappush(st, (dist, i))
                         graph[i] = dist
         print(graph)
         return res

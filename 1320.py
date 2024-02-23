@@ -1,13 +1,18 @@
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        res = []
+        st = []
         
         for i in s:
-            if res and res[-1][0] == i:
-                res[-1][1] += 1
+            if st and st[-1][0] == i:
+                st[-1][1] += 1
             else:
-                res.append([i, 1])
-            if res[-1][1] == k:
-                res.pop()
+                st.append([i,1])
+            while st and st[-1][1] >= k:
+                st.pop()
+
         
-        return "".join(i*v for i, v in res)
+        res = []
+        for f, v in st:
+            res.append(v*f)
+        
+        return ''.join(res)

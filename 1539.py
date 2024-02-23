@@ -16,4 +16,21 @@ class Solution:
             res.extend(c[i])
         
         return res
-                
+    
+    
+  
+    def findDiagonalOrder(self, nums):
+        st = deque([(0, 0)])
+        res = []
+        
+        while st:
+            x, y = st.popleft()
+            if x >= len(nums) or y >= len(nums[x]) or nums[x][y] == -1:
+                continue
+            res.append(nums[x][y])
+            nums[x][y] = -1
+            
+            st.append((x+1, y))
+            st.append((x, y+1))
+        
+        return res

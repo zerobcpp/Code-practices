@@ -8,7 +8,7 @@ class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         res = []
         st = deque([root])
-        
+        val = 0
         while st:
             n = len(st)
             temp = [] 
@@ -32,4 +32,26 @@ class Solution:
         
         return ret + 1
         
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        res = []
+        st = deque([root])
+        val = -float('inf')
+        ret = 0
+        level = 0
+        while st:
+            n = len(st)
+            tval = 0
+            level += 1
+            for i in range(n):
+                node = st.popleft()
+                tval += (node.val)
+                if node.left:
+                    st.append(node.left)
+                if node.right:
+                    st.append(node.right)
+            if tval > val:
+                val = tval
+                ret = level
             
+        
+        return ret

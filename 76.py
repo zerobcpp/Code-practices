@@ -1,6 +1,6 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        mx = 10 ** 5 + 1
+        mn = 10 ** 5 + 1
         res = ""
         req = Counter(t)
         
@@ -18,7 +18,9 @@ class Solution:
                     l += 1
                 #print(cur)
                 
-                res = s[l:r+1]
+                if r - l < mn:
+                    res = s[l:r+1]
+                    mn = r - l + 1
         
         return res
                     

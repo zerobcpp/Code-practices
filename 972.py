@@ -27,3 +27,34 @@ class Solution:
             return ways
         
         return helper('*', n)
+    
+    
+    def knightDialer(self, n):
+        if n == 1:
+            return 10
+        MOD = 10 ** 9 + 7
+        moves = [1] * 10
+        moves[5] = 0
+        
+        for i in range(1, n):
+            temp = [0] * 10
+            temp[0] = moves[4] + moves[6] % MOD
+            temp[1] = moves[8] + moves[6] % MOD
+            temp[2] = moves[7] + moves[9] % MOD
+            temp[3] = moves[8] + moves[4] % MOD
+            temp[4] = moves[3] + moves[9] + moves[0] % MOD
+            
+            temp[6] = moves[7] + moves[1] + moves[0] % MOD
+            temp[7] = moves[2] + moves[6] % MOD
+            temp[8] = moves[3] + moves[1] % MOD
+            temp[9] = moves[2] + moves[4] % MOD
+            moves = temp
+        
+        #print(moves)
+        res = 0
+        for i in moves:
+            res = (res + i) % MOD
+        
+        return res
+            
+            

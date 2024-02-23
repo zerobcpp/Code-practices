@@ -1,12 +1,19 @@
-class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
         if not nums:
-            return []
-        res = set()
-        d = {}
-        for i in nums: 
-            d[i] = d.get(i, 0) + 1
-            if d[i] >= k:
-                res.add(i)
+            return None
+        n = {}
         
-        return res
+        for i in nums:
+            n[i] = n.get(i, 0) + 1
+        
+        # get k elements only
+        nSorted = sorted(n.items(), key = operator.itemgetter(1), reverse = True)
+        
+        return [i for i,v in nSorted[:k:]]
+        

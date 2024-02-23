@@ -8,9 +8,15 @@ class Solution:
             c.add(nums[i][i])
             c.add(nums[i][n - i - 1])
         
-        res = max(c)
-        for i in range(2, ceil(res ** 0.5)):
-            if res % 2 == 0:
-                return 0
+        #print(c)
+        for cand in c:
+            prime = True
+            for i in range(2, int(cand ** 0.5)+1):
+                if cand % i == 0:
+                    prime = False
+                    break
+            if prime and cand != 1:
+                res = max(res, cand)
+            
         
-        return res
+        return 0 if res == -float('inf') else res

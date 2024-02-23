@@ -18,13 +18,13 @@ class Solution:
                 heappush(r_use, (end, cur_room))
             else:
                 f_end, cur_room  = heappop(r_use)
-                heappush(r_use, (f_end + end, cur_room))
+                heappush(r_use, (f_end + end - start, cur_room))
             
             r_cnt[cur_room] += 1
             
             #print(r_cnt, room, r_use)
         
-        print(r_cnt)
+        #print(r_cnt)
         
         res = 0
         mx = -1

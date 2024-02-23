@@ -17,3 +17,25 @@ class Solution:
         
         #print(dp)
         return min(dp[N-1])
+    
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        N = len(matrix)
+        M = len(matrix[0])
+        INF = 100 * 10000
+        
+        prev = matrix[0]
+        
+        
+        for i in range(1, N):
+            dp = [INF] * M 
+            for j in range(M):
+                
+                for dx, dy in [(i-1, j-1), (i-1, j), (i-1, j+1)]:
+                    if 0 <= dx < N and 0 <= dy < M:
+                        dp[j] = min(dp[j], prev[dy] + matrix[i][j])
+                        
+            prev = dp
+            
+        
+        
+        return min(prev)

@@ -8,16 +8,32 @@ class Solution:
         if not head or left == right:
             return head
         
-        dummy = ListNode(0, head)
+        dummy = ListNode(-1, head)
         prev = dummy
-        
-        for _ in range(left - 1):
+        for i in range(left-1):
             prev = prev.next
         
-        current = prev.next
+        cur = prev.next
+        #print(cur.val)
         
         for _ in range(right - left):
-            next_node = current.next
-            current.next, next_node.next, prev.next = next_node.next, prev.next, next_node
-
+            nn = cur.next
+            cur.next = nn.next
+            nn.next = prev.next
+            prev.next = nn
+            
+            #print()
+            
+            #self.debug(head)
+        
         return dummy.next
+    
+    
+    def debug(self, node):
+        x = node
+        while x:
+            print(x.val, end = ' ->')
+            x = x.next
+        
+        print()
+        

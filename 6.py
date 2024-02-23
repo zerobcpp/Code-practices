@@ -4,6 +4,9 @@ class Solution:
         alt = False
         count = 0
         for i in s:
+            if numRows == 1:
+                strs[count].append(i)
+                continue
             if count == numRows - 1 or count == 0:
                 alt = not alt
             strs[count].append(i)

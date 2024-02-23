@@ -7,18 +7,15 @@
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
-        def countL(root):
+        self.count = 0
+        def helper(root):
             if not root:
                 return 0
-            else:
-                return 1 + countL(root.left)
+            
+            l = helper(root.left)
+            r = helper(root.right)
+            self.count = max(l+r,self.count)
+            return 1 + max(l, r)
         
-        def countR(root):
-            if not root:
-                return 0
-            else:
-                return 1 + countR(root.right)
-        l = countL(root.left)
-        r = countR(root.right)
-        
-        return l + r
+        helper(root)
+        return self.count

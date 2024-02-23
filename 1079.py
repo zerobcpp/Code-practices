@@ -8,13 +8,33 @@ class Solution:
     def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
         ret = 0
         def helper(node, cur):
-            nonlocal ret
             if not node:
-                ret += int(cur, 2)
                 return
+            nonlocal ret
             for child in [node.left, node.right]:
                 helper(child, cur + str(node.val))
+                
+            if not node.left and not node.right:
+                cur += str(node.val)
+                ret += int(cur, 2)
+                
+            
                     
         helper(root, '')
-        return ret//2
+        return ret
+    
+    def sumRootToLeaf(self, root):
+        ret = 0
+        def helper(node, cur):
+            if not node.left and not node.right:
+                nonlocal ret
+                ret += 2 * cur + node.val
             
+            for child in [node.left, node.right]:
+                if child:
+                    helper(child, 2 * cur + node.val)
+        
+        helper(root, 0)
+        return ret
+            
+        

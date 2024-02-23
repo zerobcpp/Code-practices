@@ -23,4 +23,16 @@ class Solution:
         
         #print(st)
         return res
-                    
+    
+    def minCost(self, colors, nTime):
+        res = 0
+        n = len(colors)
+        
+        for i in range(1, n):
+            if colors[i] == colors[i-1]:
+                time = min(nTime[i-1], nTime[i])
+                nTime[i] = max(nTime[i], nTime[i-1])
+                res += time
+        
+        return res
+            

@@ -7,7 +7,14 @@ class Solution:
                 mul = 1
             else:
                 mul = n // len(temp)
+            
             if temp * mul == s:
                 return True
         
         return False
+    
+    
+    def repeatedSubstringPattern(self, s):
+        temp = s * 2
+        
+        return s in temp

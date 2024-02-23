@@ -8,11 +8,10 @@ class Solution:
         dummyNode = ListNode(-999)
         dummyNode.next = head
         fast = slow = dummyNode.next 
-        if fast.next:
-            for _ in range(n):
-                fast = fast.next
-        else:
-            return None
+        for _ in range(n):
+            fast = fast.next
+        if not fast:
+            return dummyNode.next.next
         while fast.next:
             fast = fast.next
             slow = slow.next

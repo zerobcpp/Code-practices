@@ -4,5 +4,5 @@ class Solution:
         nums1.sort()
         n = len(nums1)
         if n % 2 == 0:
-            return (nums1[n//2] + nums1[n//2+1]) / 2
+            return (nums1[n//2] + nums1[(n//2)-1]) / 2
         return nums1[n//2]

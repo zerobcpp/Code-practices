@@ -10,7 +10,7 @@ class Solution:
                 c[l][0] -= 1
                 c[l][1] = False
         
-        print(c)
+        #print(c)
         
         for w, l in matches:
             if w not in c:
@@ -31,6 +31,29 @@ class Solution:
         
         res[0].sort()
         res[1].sort()
+        return res
+    
+    
+    def findWinners(self, matches):
+        c = {}
+        
+        for w, l in matches:
+            if w not in c:
+                c[w] = 0
+            if l not in c:
+                c[l] = -1
+            else:
+                c[l] -= 1
+        
+        res = [[], []]
+        for i, v in c.items():
+            if v == 0:
+                res[0].append(i)
+            elif v == -1:
+                res[1].append(i)
+        
+        res[1].sort()
+        res[0].sort()
         return res
         
         

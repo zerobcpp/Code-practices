@@ -2,10 +2,11 @@ class Solution:
     def minOperations(self, nums: List[int]) -> int:
         n = len(nums)
         res = n
+        nums = list(set(nums))
         nums.sort()
-
-        
-        for i in range(n):
+        #rint(nums)
+       
+        for i in range(len(nums)):
             l = nums[i]
             r = l + n - 1
             

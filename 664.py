@@ -1,7 +1,9 @@
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        N = len(s)
         cache = {}
+        s = re.sub(r'(.)\1*', r'\1', s)
+        N = len(s)
+        
         def helper(l, r):
             if l >= N or r < 0:
                 return float('inf')

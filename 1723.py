@@ -1,11 +1,11 @@
 class Solution:
     def maximumRequests(self, n: int, requests: List[List[int]]) -> int:
         N = len(requests)
-        graph = [0] * N
+        graph = [0] * (n)
         self.ret = 0
         def helper(i, c):
             if i >= N:
-                for i in range(N):
+                for i in range(n):
                     if graph[i] != 0:
                         return
                 self.ret = max(self.ret, c)

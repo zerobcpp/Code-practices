@@ -21,4 +21,30 @@ class Solution:
 
         
         return helper(p, q)
+    
+    
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         
+        def helper(node):
+            st = [node]
+            res = []
+            while st:
+                cur = st.pop()
+                if cur:
+                    res.append(cur.val)
+                else:
+                    res.append('null')
+                    continue
+                for child in [cur.left, cur.right]:
+                    if child:
+                        st.append(child)
+                    else:
+                        st.append(None)
+            
+            return res
+        
+        pst = helper(p)
+        qst = helper(q)
+        #print(pst, qst)
+        return pst == qst
+    

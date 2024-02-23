@@ -14,4 +14,18 @@ class Solution:
         #print(vowels)
         return vowels == 0
         
-            
+    
+    def halvesAreAlike(self, s):
+        N = len(s)
+        s = s.lower()
+        c = set('aeiou')
+        vowels = 0
+        for i in range(N//2):
+            if s[i] in c:
+                vowels += 1
+        
+        for i in range(N//2, N):
+            if s[i] in c:
+                vowels -= 1
+        
+        return vowels == 0

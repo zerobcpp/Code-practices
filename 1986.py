@@ -4,24 +4,30 @@ class Solution:
         
         g = {i : [] for i in range(n)}
         node = {}
-        for u,v in edges:   
+        degree = [0] * n
+        for u, v in edges:   
             g[u].append(v)
+            degree[v] += 1
         i = 0
         for c in colors:
             node[i] = c
             i += 1
         
-        seen = set()
-        st = [0]
-        res = {}
+        st = [i for i in range(n) if not degree[i]]
+        c = []
+        cnt = defaultdict(lambda: defaultdict(int))
+        res = 0
         while st:
             cur = st.pop()
-            res[node[cur]] = res.get(node[cur],0) + 1
-            if cur in seen:
-                return -1
-            seen.add(cur)
-            
+            c.append(cur)
+            cnt[cur][node[cur]] += 1
+            res = max(res, cnt[cur][node[cur]])
             for neigh in g[cur]:
-                st.append(neigh)
+                for idx in cnt[cur] :
+                    cnt[neigh][idx] = max(cnt[neigh][idx], cnt[cur][idx])
+                degree[neigh] -= 1
+                if degree[neigh] == 0:
+                    st.append(neigh)
         
-        return max(res.values())
+        #print(n, c)
+        return res if n == len(c) else - 1

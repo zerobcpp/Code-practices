@@ -3,12 +3,13 @@ public:
     bool isSubsequence(string s, string t) {
         int ns = s.size();
         int nt = t.size();
-        int cnt = 0;
+        int i = 0, j = 0;
         
-        for(int i = 0; i < nt; i++){
-            if(s.at(cnt) == t.at(i))
-                cnt ++;
+        while (i < ns && j < nt){
+            if (s.at(i) == t.at(j))
+                i++;
+            j++;
         }
-        return cnt == ns;
+        return i == ns;
     }
 };

@@ -14,10 +14,10 @@ class Solution(object):
             while lenb < len(a):
                 b = "0" + b
                 lenb += 1
-            else:
-                while lena < len(b):
-                    a = "0" + a
-                    lena += 1
+        else:
+            while lena < len(b):
+                a = "0" + a
+                lena += 1
 
         carry = 0
         bit = 0

@@ -22,3 +22,23 @@ class Solution:
                 result += count[i]
         
         return result
+    
+    def findNumberOfLIS(self, nums: List[int]) -> int:
+        subs = []
+        d = defaultdict(list) 
+        
+
+        for num in nums:
+            i = bisect.bisect_left(subs, num)
+            if i == len(subs):
+                subs.append(num)
+            else:
+                subs[i] = num
+            count = 0
+            for freq, end in d[i]:
+                if end < num:
+                    count += freq
+            d[i+1].append([max(1, count), num])
+        
+        
+        return sum(freq for freq, end in d[len(subs)])

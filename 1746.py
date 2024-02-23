@@ -6,10 +6,25 @@ class Solution:
             c[s[i]].append(i)
             
         res = -1
+        #print(c)
         for i, v in c.items():
-            for i in range(1,len(v)):
-                res = max(res, v[i] - v[i-1] - 1)
-        
+            
+            if len(v) > 1:
+                n = len(v)
+                res = max(res, v[n-1] - v[0] - 1)
         return res
                 
         
+        
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        c = {}
+        N = len(s)
+        res = -1
+        for i in range(N):
+            if s[i] in c:
+                res = max(res, i - c[s[i]]-1)
+            else:
+                c[s[i]] = i
+        
+        return res
+                

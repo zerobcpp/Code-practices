@@ -19,3 +19,30 @@ class Solution:
             r -= 1
         
         return res
+    
+    
+    def pairSum(self, head):
+        slow, fast = head, head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        
+        def reverse(node):
+            prev = None
+            x = node
+            while x:
+                y = x.next
+                x.next = prev
+                prev = x
+                x = y
+            return prev
+        y = reverse(slow)
+        #print(y)
+        x = head
+        res = 0
+        while y:
+            res = max(res, x.val + y.val)
+            x = x.next
+            y = y.next
+        return res
+        

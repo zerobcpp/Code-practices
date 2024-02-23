@@ -1,19 +1,16 @@
 class Solution:
     def longestObstacleCourseAtEachPosition(self, obstacles: List[int]) -> List[int]:
-        n = len(obstacles)
-        res = [1] * n
+        N = len(obstacles)
+        res = [1] * N
+        track = []
         
-    
-        ret = []
-    
         for i, v in enumerate(obstacles):
-            # Find the rightmost insertion position idx.
-            idx = bisect_right(ret, v)
-            
-            if idx == len(ret):
-                ret.append(v)
+            idx = bisect_right(track, v)
+            if idx == len(track):
+                track.append(v)
             else:
-                ret[idx] = v
-            res[i] = idx + 1
+                track[idx] = v
             
+            res[i] = idx + 1
+        
         return res

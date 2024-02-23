@@ -6,8 +6,8 @@ class Solution:
             return a
         
         while b != 0:
-            carry = (a & b) << 1
-            a ^= b
+            carry = (((a & b) << 1) & 0xffffffff)
+            a = (a^b) & 0xffffffff
             b = carry
         
-        return a
+        return a if a < 0x7fffffff else ~(a^0xffffffff)

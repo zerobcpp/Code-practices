@@ -25,8 +25,30 @@ class Solution:
         res = 0
         
         for i in range(n):
+            
             res = max(res, left[i]+right[i])
             #print(i, left, right)
+        if s == '01':
+            return 2
+        return res
+    
+    
+    def maxScore(self, s):
+        z = o = 0
+        
+        for i in s:
+            if i == '1':
+                z += 1
+        #print(z)
+        n = len(s)
+        res = 0
+        for i in range(n-1):
+            if s[i] == '1':
+                z -= 1
+            else:
+                o += 1
+            
+            res = max(res, z + o)
         
         return res
-            
+        

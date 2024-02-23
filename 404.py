@@ -18,3 +18,20 @@ class Solution:
         
         helper(root, False)
         return self.res
+    
+    def sumofLeftLeaves(self, root):
+        st = [(root, False)]
+        res = 0
+        while st:
+            cur, left = st.pop()
+            
+            if left and cur.left == None and cur.right == None:
+                res += cur.val
+            if not cur:
+                continue
+            st.append((cur.left, True))
+            st.append((cur.right, False))
+        
+        return res
+            
+                

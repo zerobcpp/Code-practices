@@ -18,4 +18,7 @@ class Solution:
             #print(cache[a,b])
             return cache[a, b]
         
+        for i in range(1, n, 25):
+            if helper(i, i) > 1.0 - 10 ** -5:
+                return 1
         return helper(n, n)

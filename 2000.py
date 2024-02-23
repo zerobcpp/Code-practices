@@ -6,11 +6,14 @@ class Solution:
         
         def helper(m):
             speed = 0
-            for i in dist:
-                speed += i/m            
+            for i in range(N):
+                hs = dist[i] / m
+                speed += ceil(hs) if i != N-1 else hs
+            
+            #print(speed)
             return speed <= hour
         
-        l, r = 1, 10 ** 5
+        l, r = 1, 10 ** 9
         res = 0
         while l <= r:
             mid = l + (r - l) // 2

@@ -7,12 +7,13 @@ class Solution:
                 return 1 if r == 0 else 0
             if (i,r, mx) in cache:
                 return cache[i,r,mx]
-            cnt = helper(i+1, r, mx)
             
+            cnt = mx * helper(i+1, r, mx) % MOD
             
             for j in range(mx+1, m+1):
-                cnt += helper(i+1, r-1, j)
+                cnt += helper(i+1, r-1, j) % MOD
             
+            cnt %= MOD
             cache[i, r, mx] = cnt
             return cnt
         

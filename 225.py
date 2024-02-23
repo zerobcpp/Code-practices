@@ -7,7 +7,7 @@ class MyStack:
         self.q.queue(x)
     
     def pop(self) -> int:
-        return self.q.peek()
+        return self.q.dequeue()
 
     def top(self) -> int:
         return self.q.peek()
@@ -43,7 +43,14 @@ class Queue:
         return self.head.next.v
     
     def empty(self):
-        return self.head.next == None
+        self.dbg()
+        return self.head.next.v == -1
+    
+    def dbg(self):
+        x = self.head
+        while x:
+            print(x.v, end = '\t')
+            x = x.next
     
     
         

@@ -7,12 +7,9 @@ class Solution(object):
         # With extra memory:
         
         intkey = {}
-        for i in range(max(nums)+1):
-            intkey[i] = 0
-
         for i in nums:
-            intkey[i] +=1
-            
-        for k, v in intkey.items():
-            if v == 1:
-                return k
+            intkey[i] = intkey.get(i, 0) + 1
+        
+        for i, v in intkey.items(): 
+            if intkey[i] == 1:
+                return i

@@ -7,3 +7,14 @@ class Solution:
                     res += 1
         
         return res
+    
+    def countNegatives(self, grid):
+        res = 0 
+        for i in grid:
+            n = len(i)
+            for j in range(n):
+                if i[j] < 0:
+                    res += (n - j)
+                    break
+        
+        return res

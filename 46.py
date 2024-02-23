@@ -1,15 +1,33 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        N = len(nums)
         res = []
-        n = len(nums)
+        arr = []
+        def helper(num):
+            if len(arr) == N:
+                res.append(arr[:])
+                return
+            
+            for i in range(len(num)):
+                arr.append(num[i])
+                helper(num[i+1:] + num[:i]) 
+                arr.pop()
         
-        def dfs(nums, path):
-            #print(nums)
-            print(path)
-            if n == len(path):
-                res.append(path)
-                # return # backtracking
-            for i in range(len(nums)):
-                dfs(nums[:i]+nums[i+1:], path+[nums[i]])
-        dfs(nums, [])
+        helper(nums)
+        return res
+    
+    
+    def permute(self, nums):
+        N = len(nums)
+        res = []
+        def helper(idx, num):
+            if idx == len(num):
+                res.append(num[:])
+            
+            for i in range(idx, N):
+                num[idx], nums[i] = nums[i], nums[idx]
+                helper(idx+1, num)
+                num[idx], nums[i] = nums[i], nums[idx]
+            
+        helper(0, nums)
         return res

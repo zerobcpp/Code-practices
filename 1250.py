@@ -1,18 +1,31 @@
 class Solution:
-    def longestCommonSubsequence(self, t1: str, t2: str) -> int:
-        res = 0
+    def longestCommonSubSequence(self, t1, t2):
+        pass
+
+
+
+
+
+
+
+
+
+    def longestCommonSubsequence(self, t1: str, t2: str) -> int: 
+        if len(t2) > len(t1):
+            t1, t2 = t2, t1
         n = len(t1)
         m = len(t2)
-        if m < n:
-            t1, t2 = t2, t1
-            n, m = m, n
-
-        for i in range(n):
-            temp = 1 if t1[i] == t2[i] else 0
-            for j in range(i, m):
-                if t1[temp] == t2[j]:
-                    temp += 1
-            
-            res = max(res, temp)
+        cache = {}
+        def helper(i1, i2):
+            if i1 >= n or i2 >= m:
+                return 0
+            if (i1, i2) in cache:
+                return cache[i1, i2]
+            if t1[i1] == t2[i2]:
+                cache[i1, i2] = 1 + helper(i1+1, i2+1)
+            else:
+                cache[i1, i2] = max(helper(i1+1, i2), helper(i1, i2+1))
+            return cache[i1,i2]
         
-        return res
+        return helper(0,0)
+                

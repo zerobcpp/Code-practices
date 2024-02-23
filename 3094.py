@@ -11,10 +11,11 @@ class Solution:
             if v == 1:
                 return -1
             
-            while v > 4:
-                res += 1
-                v -= 3
-            
-            res += v // 2
+            #while v > 4:
+            #   res += 1
+            #    v -= 3
+            #res += v // 2
+            res += ceil(v/3)
         
         return res
+        

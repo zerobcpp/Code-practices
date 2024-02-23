@@ -8,10 +8,12 @@ class Solution:
             graph[u].append(v)
         
         #print(graph, adj)
-        st = deque([i for i in range(1, n+1) if adj[i] == 0])
+        st = deque()
         res = [0] * (n+1)
         
         for i in range(1, n+1):
+            if adj[i] == 0:
+                st.append(i)
             res[i] = time[i-1]
             
         while st:

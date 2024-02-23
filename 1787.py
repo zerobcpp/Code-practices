@@ -11,7 +11,24 @@ class Solution:
             right = N - i - 1
             
             ls = nums[i] * left - (pf[i] - nums[i])
-            rs = (pf[-1] - pf[i]) - nums[i] * right
+            rs = (pf[N-1] - pf[i]) - nums[i] * right
+            
+            res.append(ls+rs)
+        
+        return res
+    
+    def getSumAbsoluteDifferences(self, nums: List[int]) -> List[int]:
+        pf = [nums[0]]
+        N = len(nums)
+        sm = sum(nums)
+        lsm = 0
+        res = []
+        for i in range(N):
+            left = i
+            right = N - i - 1
+            lsm += nums[i]
+            ls = nums[i] * left - (lsm - nums[i])
+            rs = (sm - lsm) - nums[i] * right
             
             res.append(ls+rs)
         

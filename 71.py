@@ -5,7 +5,7 @@ class Solution:
         print(path)
         
         for dirs in path:
-            if not dirs:
+            if not dirs or dirs == '.':
                 continue
             if dirs == '..':
                 if st:

@@ -13,14 +13,17 @@ class Solution {
 public:
     int res = INT_MAX;
     int minDepth(TreeNode* root) {
+        if (!root)
+            return 0;
         helper(root, 1);
-        return res;
+        return res != INT_MAX ? res : 0;
     }
     void helper(TreeNode *node, int depth){
         if(node == NULL)
             return;
-        if(!node->left && !node->right)
+        if(!node->left && !node->right){
             res = min(res, depth);
+        }
         helper(node->left, depth+1);
         helper(node->right, depth+1);
     }

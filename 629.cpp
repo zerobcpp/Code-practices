@@ -15,6 +15,7 @@ public:
         int cnt = 0;
         for(int i = 0; i < n; ++i){
             cnt += (helper(dp, n - 1, k - i) % MOD);
+            cnt %= MOD;
         }
         
         return dp[n][k] = cnt;

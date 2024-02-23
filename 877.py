@@ -6,7 +6,7 @@ class Solution:
         #print((1 << n)-1)
         
         while st:
-            mask, node, res = st.pop()
+            mask, node, res = st.popleft()
             
             if mask == (1 << n) - 1:
                 return res

@@ -1,13 +1,23 @@
 class Solution:
-    def longestAlternatingSubarray(self, nums: List[int], threshold: int) -> int:
+    def longestAlternatingSubarray(self, nums: List[int], t: int) -> int:
         n = len(nums)
+        if n == 1:
+            if nums[0] <= t and nums[0] % 2 == 0:
+                return 1
+            else:
+                return 0
         res = 0
-        for i in range(n-1):
-            if nums[i] >= threshold:
-                continue
-            if nums[i] % 2 != nums[i+1] % 2:
-                res += 1
+        r = 0
         
-        return res + 1
-                
+        while r < n:
             
+            if nums[r] % 2 == 0 and nums[r] <= t:
+                l = r
+                while r < n - 1 and nums[r] % 2 != nums[r+1] % 2 and nums[r+1] <= t:
+                    r += 1
+                res = max(res, r - l + 1)
+            r += 1
+        
+        return res
+            
+                        

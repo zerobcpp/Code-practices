@@ -37,7 +37,9 @@ class LRUCache:
         cur = self.head.next
         cur.prev = node
         node.next = cur
+        node.prev = self.head
         self.head.next = node
+        #self.debug()
         
     def rmv(self, node):
         prev = node.prev
@@ -48,7 +50,7 @@ class LRUCache:
     def debug(self):
         cur = self.head
         while cur:
-            print(cur.k, cur.v, end = ", ")
+            print('[', cur.k, cur.v, ']', end = '->')
             cur = cur.next
         print('\n')
 

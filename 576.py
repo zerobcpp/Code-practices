@@ -2,7 +2,7 @@ class Solution:
     def findPaths(self, n: int, m: int, maxMove: int, startRow: int, startColumn: int) -> int:
         dirs = [0, 1, 0, -1, 0]
         cache = {}
-        
+        MOD = 10 ** 9 + 7 
         def helper(i, j, move):
             if move < 0:
                 return 0
@@ -15,10 +15,10 @@ class Solution:
             for idx in range(4):
                 dx, dy = i + dirs[idx], j + dirs[idx+1]
                 #print(dx, dy)
-                cnt += helper(dx, dy, move-1)
+                cnt += (helper(dx, dy, move-1) % MOD)
                 
-            cache[i, j, move] = cnt
-            return cnt
+            cache[i, j, move] = cnt % MOD
+            return cache[i,j, move]
         
         
         return helper(startRow, startColumn, maxMove)

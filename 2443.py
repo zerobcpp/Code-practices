@@ -1,30 +1,30 @@
 class Solution:
     def validPartition(self, nums: List[int]) -> bool:
         N = len(nums)
-        cache = {N: True}
+        cache = [-1] * N
         def helper(i):
             print(i, end = ' ')
             if i >= N:
                 return True
-            if i in cache:
+            if cache[i] != -1:
                 return cache[i]
-            cur = False
+            
             if i + 1 < N and nums[i] == nums[i+1]:
-                cur = True
                 if helper(i+2):
+                    cache[i] = True
                     return True
-            if i + 2 < N and nums[i] == nums[i+2]:
-                cur = True
+            if i + 2 < N and nums[i] == nums[i+2] and nums[i] == nums[i+1]:
                 if helper(i+3):
+                    cache[i] = True
                     return True
-            if i + 2 < N and nums[i] == nums[i+1] + 1 and nums[i] == nums[i+2] + 2:
-                cur = True
-                if helper(i+2):
+            if i + 2 < N and nums[i] == nums[i+1] - 1 and nums[i] == nums[i+2] - 2:
+                if helper(i+3):
+                    cache[i] = True
                     return True
                 
             #print('\n')
-            cache[i] = cur
-            return cur
+            cache[i] = False
+            return False
         helper(0)
-        #print(cache)
+        print(cache)
         return cache[0]

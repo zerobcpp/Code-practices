@@ -16,3 +16,15 @@ class Solution:
             return cnt
         
         return helper(n)
+    
+    
+    def integerBreak(self, n):
+        if n <= 3:
+            return n - 1
+        
+        cnt = 1
+        while n > 4:
+            cnt *= 3
+            n -= 3
+        
+        return cnt * n

@@ -15,4 +15,16 @@ class Solution:
             return profit
         
         return helper(0, True)
+    
+    def maxProfit(self, prices: List[int]) -> int:
+        N = len(prices)
+        cd, sell, buy = 0, 0, -prices[0]
+        
+        for i in range(1, N):
+            pcd, ps, pb = cd, sell, buy
+            cd = max(pcd, ps)
+            buy = max(pcd - prices[i], pb)
+            sell = pb + prices[i]
+        
+        return max(sell, buy, cd)
             

@@ -6,7 +6,7 @@ class Graph:
         
         for u, v, c in edges:
             self.g[u].append((v, c))
-        print(self.g)
+        #print(self.g)
 
     def addEdge(self, edge: List[int]) -> None:
         u, v, c = edge

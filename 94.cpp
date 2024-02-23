@@ -17,14 +17,13 @@ public:
         return res;
     }
     
-    vector<int> inorder(TreeNode *root){
+    void inorder(TreeNode *root){
         if (root == NULL)
-            return res;
+            return;
         if (root->left)
             inorder(root->left);
         res.push_back(root->val);
         if (root->right)
             inorder(root->right);
-        return res;
     }
 };

@@ -1,13 +1,12 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        c = list()
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i,j]
-        
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l = 0
+        r = len(numbers)-1
+        while l < r:
+            if numbers[l] + numbers[r] == target:
+                return [l+1, r+1]
+            elif numbers[l] + numbers[r] > target:
+                r -= 1
+            else:
+                l += 1
+        return -1

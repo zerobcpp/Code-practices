@@ -15,3 +15,21 @@ class Solution:
             return max(helper(node.left, mx, mn), helper(node.right, mx, mn))
         
         return helper(root, 0, 10 ** 5)
+    
+    
+    
+    def maxAncestorDiff(self, root):
+        st = [(root, 0, 10 ** 5)]
+        res = 0
+        while st:
+            cur, cmx, cmn = st.pop()
+            mx = max(cur.val, cmx)
+            mn = min(cur.val, cmn)
+            res = max(res, mx - mn)
+            
+            for child in [cur.left, cur.right]:
+                if child:
+                    st.append((child, mx, mn))
+        
+        return res
+            

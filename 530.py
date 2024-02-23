@@ -7,14 +7,35 @@
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         res = 10 ** 5 + 1
-        
+        prev = None
         def helper(node):
-            nonlocal res
-            if node.left:
-                res = min(res, abs(node.val - node.left.val))
-                helper(node.left)
-            if node.right:
-                res = min(res, abs(node.val - node.right.val))
-                helper(node.right)
+            nonlocal res, prev
+            if not node:
+                return
+            helper(node.left)
+            if prev:
+                res = min(res, abs(node.val - prev.val))
+            prev = node
+            helper(node.right)
+            
         helper(root)
         return res
+    
+    def getMinimumDifference(self, root):
+        res = []
+        def helper(node):
+            if not node:
+                return
+            helper(node.left)
+            res.append(node.val)
+            helper(node.right)
+        
+        helper(root)
+        ret = 10 ** 5
+        for i in range(1, len(res)):
+            ret = min(ret, res[i] - res[i-1])
+        
+        return ret
+            
+            
+            

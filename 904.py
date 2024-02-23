@@ -29,3 +29,19 @@ class Solution:
         
         
         return r1 == r2
+    
+    
+    def leafSimiliar(self, r1, r2):
+        l1 = []
+        l2 = []
+        def helper(node, arr):
+            if not node:
+                return
+            if not node.left and not node.right:
+                arr.append(node.val)
+            helper(node.left)
+            helper(node.right)
+        
+        helper(r1, l1)
+        helper(r2, l2)
+        return l1 == l2

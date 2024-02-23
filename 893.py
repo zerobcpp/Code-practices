@@ -12,20 +12,23 @@ class Solution:
         while st:
             cur, parent = st.pop()
             if parent:
-                c[parent.val].append(cur.val)
-                c[cur.val].append(parent.val)
+                c[parent].append(cur)
+                c[cur].append(parent)
             for child in [cur.left, cur.right]:
                 if child:
                     st.append((child, cur))
         #print(c)
-        st = [(target.val, k)]
-        seen = set([target.val])
+        st = [(target, k)]
+        seen = set([target])
         res = []
         while st:
             cur, level = st.pop()
             #print(c[cur])
+            
+            if level < 0:
+                continue
             if level == 0:
-                res.append(cur)
+                res.append(cur.val)
             for neigh in c[cur]:
                 if neigh not in seen:
                     seen.add(neigh)

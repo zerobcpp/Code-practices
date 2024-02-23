@@ -8,7 +8,11 @@ class Solution(object):
         string = list(s)
         for i in range(len(shifts)):
             shift = shifts[i]
-            print(shift)
+            #print(shift)
             for j in range(i+1):
-                string[j] = chr(ord(string[j])+shift)
+                # ascii 97 = a, 122 = z
+                asc = ord(string[j]) + (shift%26)
+                if asc > 122:
+                    asc -= 26
+                string[j] = chr(asc)
         return "".join(string)

@@ -8,6 +8,8 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return None
         c = {}
         c[node] =  Node(node.val)
         st = [node]

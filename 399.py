@@ -1,33 +1,37 @@
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        graph = defaultdict(list)
-        outcome = dict()
-        
-        for (u, v) , q in zip(equations, values):
-            graph[u].append(v)
-            graph[v].append(u)
-            outcome[f'{u}/{v}'] = q
-            outcome[f'{v}/{u}'] = 1/q
-        
         res = []
+        graph = defaultdict(list)
+        val = {}
         
-        for n, d in queries:
-            if n not in graph or d not in graph:
+        for (n, d), q in zip(equations, values):
+            graph[n].append(d)
+            graph[d].append(n)
+            val[n, d] = q
+            val[d, n] = 1/q
+        
+        for s, e in queries:
+            if s not in graph or e not in graph:
                 res.append(-1.0)
             else:
                 seen = set()
-                seen.add(n)
-                st = [(n, 1)]
+                goal = False
+                st = [(s, 1)]
+
                 while st:
-                    cur, val = st.pop()
-                    if cur == d:
-                        res.append(val)
+                    cur, temp = st.pop()
+                    if cur == e:
+                        res.append(temp)
+                        goal = True
                         break
                     for neigh in graph[cur]:
                         if neigh not in seen:
-                            temp = outcome[f'{cur}/{neigh}']
-                            st.append((neigh, val * temp))
+                            prod = val.get((cur, neigh), 0) * temp
+                            st.append((neigh, prod))
                             seen.add(neigh)
+                if not goal:
+                    res.append(-1.0)
+
         
         return res
                         

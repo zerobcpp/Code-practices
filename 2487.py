@@ -1,5 +1,5 @@
 class Solution:
-    def partitionString(self, s: str) -> int:
+    def partitionStringn2(self, s: str) -> int:
         n = len(s)
         i = 0
         res = 0
@@ -15,3 +15,18 @@ class Solution:
             res += 1
         
         return res
+    
+
+    def partitionString(self, s):
+        n = len(s)
+        c = {}
+        res = 0
+        for i in s:
+            idx = i
+            if idx in c:
+                c = {}
+                res += 1
+            c[idx] = 1
+        
+        return res + 1
+

@@ -6,10 +6,11 @@ class Solution:
         for i in nums:
             count = 0
             flush = i
-            while flush + 1 in nums:
-                count += 1
-                flush += 1
-            
-            res = max(count, res)
+            if flush - 1 not in nums:
+                count = 1
+                while flush + 1 in nums:
+                    flush += 1
+                    count += 1
+            res = max(res, count)
         
-        return res + 1
+        return res

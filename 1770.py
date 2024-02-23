@@ -12,7 +12,7 @@ class Solution:
             count[v].append(i)
         
         res = 0
-        for i in range(mx, -1, -1):
+        for i in range(mx, 0, -1):
             if i in count:
                 while len(count[i]) > 1:
                     res += 1
@@ -20,4 +20,21 @@ class Solution:
             #print(count)
         
         return res
+    
+    
+    def minDeletions(self, s):
+        c = defaultdict(int)
         
+        for i in s:
+            c[i] += 1
+        
+        freq = set()
+        res = 0
+        for i, v in c.items():
+            
+            while v > 0 and v in freq:
+                v -= 1
+                res += 1
+            freq.add(v)
+        
+        return res

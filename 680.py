@@ -4,18 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        string = [i for i in s]
-        l, r = 0, len(string) - 1
-        mid = l + (r-l) // 2
-        delete = True
-        while l < mid:
-            #print(l,r)
-            if string[l] == string[r]:
-                l += 1
-                r -= 1
-            if string[l] != string[r]:
-                string[r] = string[r-1]
-                string.pop(r)
-                break
-        print(string)
-        return string[::] == string[::-1]
+        # Time: O(n)
+        # Space: O(n)
+        l, r = 0, len(s) - 1
+        while l < r:
+            if s[l] != s[r]:
+                # create two possible choice
+                s1 = s[l:r]
+                s2 = s[l+1:r+1]
+                
+                return s1 == s1[::-1] or s2 == s2[::-1]
+            l += 1
+            r -= 1
+        return True
+                

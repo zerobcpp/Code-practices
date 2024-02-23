@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
         st = [(root, 1)]
         res = float('inf')
         while st:
@@ -19,4 +21,15 @@ class Solution:
                 st.append((cur.right, depth + 1))
         
         return res
+    
+    def minDepth(self, root):
+        self.res = float('inf')
+        def helper(node, depth):
+            if not node:
+                return
+            if not node.left and not node.right:
+                self.res = min(self.res, depth)
+            helper(node.left, depth + 1), helper(node.right, depth + 1)
+        helper(root, 1)
+        return self.res if self.res != float('inf') else 0
             

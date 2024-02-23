@@ -4,7 +4,7 @@ class Solution:
         left = 0
         cur = []
         for i in pushed:
-            if st and st[-1] == popped[left]:
+            while st and st[-1] == popped[left]:
                 cur.append(st.pop())
                 left += 1
             st.append(i)
@@ -12,6 +12,7 @@ class Solution:
         
         while st:
             cur.append(st.pop())
+        
         
         return cur == popped
             

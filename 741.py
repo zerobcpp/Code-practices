@@ -4,13 +4,13 @@ class Solution:
         M = len(grid[0])
         
         dirs = [0, 1, 0, -1, 0]
-        st = [(0,0,0)]
+        st = [(0,0,grid[0][0])]
         seen = {(0, 0)}
         
         cnt = 0
         while st:
             x, y, p = st.pop()
-            
+            cnt = max(cnt, p)
             
             for i in range(4):
                 dx = x + dirs[i]

@@ -1,7 +1,7 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         N = len(piles)
-        l = 0
+        l = 1
         r = max(piles)
         def helper(k):
             hour = 0

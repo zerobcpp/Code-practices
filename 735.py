@@ -1,24 +1,17 @@
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        c = []
         res = []
         for i in asteroids:
-            broke = False
-            while c and ((c[-1] > 0 and i < 0) or (c[-1] < 0 and i > 0)):
-                if (c[-1] > 0 and i < 0):
-                    if (c[-1] == -i or c[-1] < -i) and not broke:
-                        c.pop()
+            res.append(i)
+            while len(res) >=2 and res[-2] > 0 and res[-1] < 0:
+                x, y = res.pop(), res.pop()
+                if -x != y:
+                    if -x > y:
+                        res.append(x)
                     else:
-                        broke = True
-                        res.append(c.pop())
-                    
-                elif (c[-1] < 0 and i > 0):
-                    if (-c[-1] == i or -c[-1] < i) and not broke:
-                        c.pop()
-                    else:
-                        broke = True
-                        res.append(max(-c.pop(), i))
-                
-            c.append(i)
+                        res.append(y)
+                #print(res)
         
-        return res[::-1]
+        return res
+    
+    

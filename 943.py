@@ -16,7 +16,7 @@ class Solution:
         
         st = []
         for i in range(N - 1, -1, -1):
-            while st and nums[st[-1]] >= nums[i]:
+            while st and nums[st[-1]] > nums[i]:
                 st.pop()
             if st:
                 right[i] = st[-1]

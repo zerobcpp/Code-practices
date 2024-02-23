@@ -9,7 +9,7 @@ class Solution:
             270 : (0, -1)
         }
         for inst in instrs:
-            dirs %= 360
+            
             if inst == 'L':
                 dirs += 90
             elif inst == 'R':
@@ -19,9 +19,8 @@ class Solution:
                 points[0] += move[0]
                 points[1] += move[1]
             
-            
-            
-            #print(points)
+            dirs %= 360
+            #print(points, dirs)
         
         return all(i == 0 for i in points) or dirs != 0
             

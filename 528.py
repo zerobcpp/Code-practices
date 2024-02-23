@@ -23,4 +23,22 @@ class Solution:
         
         return dummy.next
             
+    
+    def swapNodes(self, head, k):
+        
+        swap = head
+        for i in range(k-1):
+            swap = swap.next
             
+        nextswap = head
+        end = swap
+        while end.next:
+            nextswap = nextswap.next
+            end = end.next
+        
+        swap.val, nextswap.val = nextswap.val, swap.val
+        
+        return head
+        
+        
+        

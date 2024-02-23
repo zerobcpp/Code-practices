@@ -1,7 +1,7 @@
 class Solution:
     def stoneGameII(self, piles: List[int]) -> int:
         n = len(piles)
-
+        @cache
         def f(p, i, m):
             if i == n:
                 return 0

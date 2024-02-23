@@ -7,14 +7,16 @@
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
         res = []
-        @cache
+        cache = {}
         def helper(l, r):
             
             if l > r:
                 return [None]
             elif l == r:
-                return [TreeNode(l)]
-            
+                cache[l, r] = [TreeNode(l)]
+                return cache[l, r]
+            if (l, r) in cache:
+                return cache[l, r]
             count = []
             for i in range(l, r + 1):
                 left = helper(l, i-1)
@@ -24,7 +26,7 @@ class Solution:
                     for rn in right:
                         cur = TreeNode(i, ln, rn)
                         count.append(cur)
-            
+            cache[l,r] = count
             return count
         
         return helper(1, n)

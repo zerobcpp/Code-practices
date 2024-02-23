@@ -11,12 +11,16 @@ class Solution:
                 if i % f == 0 and i // f in arr:
                     res += (helper(f) * helper(i//f))
             
-            return res % MOD
+            return res
         
         res = 0
         
         for i in arr:
             res += helper(i) % MOD
         
-        return res
+        return res % MOD
+        
+
+        
+        
         

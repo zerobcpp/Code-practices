@@ -33,11 +33,13 @@ class DSU:
 class Solution:
     def findCriticalAndPseudoCriticalEdges(self, n: int, edges: List[List[int]]) -> List[List[int]]:
         temp = edges.copy()
+        for i, edge in enumerate(temp):
+            edge.append(i)
         temp.sort(key = lambda x: x[2])
         uf = DSU(n)
         
         total_cost = 0
-        for u, v, c in temp:
+        for u, v, c, i in temp:
             if uf.union(u, v):
                 total_cost += c
         
@@ -46,22 +48,22 @@ class Solution:
         crit = [] # edge deletion causing increase MST cost
         pcrit = [] # edge that can be deleted but doesn't increase MST cost
         
-        for i, (u, v, c) in enumerate(temp):
+        for u, v, c, i in temp:
             uft = DSU(n)
             adjust = 0
             
-            for j, (ju, jv, jc) in enumerate(temp):
+            for ju, jv, jc, j in temp:
                 if i != j and uft.union(ju, jv):
                     adjust += jc
             
-            if adjust > total_cost:
+            if adjust > total_cost or uft.maxRank < n:
                 crit.append(i)
                 continue
             
             uft = DSU(n)
             adjust = c
             uft.union(u, v)
-            for j, (ju, jv, jc) in enumerate(temp):
+            for ju, jv, jc, j in temp:
                 if i != j and uft.union(ju, jv):
                     adjust += jc
             

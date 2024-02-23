@@ -22,4 +22,4 @@ class Solution:
             return can
                     
         
-        return helper(0, 1)
+        return helper(0, 0)

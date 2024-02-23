@@ -5,9 +5,9 @@ class Solution:
         for i in words:
             for j in i:
                 c[j] += 1
-        
+        print(c)
         for i, v in c.items():
-            if v // N < 1:
+            if v % N != 0:
                 return False
         
         return True

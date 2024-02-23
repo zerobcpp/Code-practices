@@ -19,13 +19,13 @@ class Solution:
                 return 0
             if (i, j) in cache:
                 return cache[i, j]
-            cache[i, j] = 0
+            res = 0
             jidx = target[j]
             if (i, jidx) in cnt and cnt[i, jidx] > 0:
-                cache[i, j] += (cnt[i, jidx] * helper(i + 1, j + 1))
+                res += (cnt[i, jidx] * helper(i + 1, j + 1))
             
-            cache[i, j] += helper(i+1, j)
-            
+            res += helper(i+1, j)
+            cache[i,j] = res % MOD
             return cache[i, j]
         
         res = helper(0, 0) % MOD

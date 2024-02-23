@@ -11,9 +11,4 @@ class Solution:
             copy.append(x.val)
             x = x.next
         
-        copyrev = list(copy.__reversed__())
-        
-        for i in range(len(copy)):
-            if copy[i] != copyrev[i]:
-                return False
-        return True
+        return copy == copy[::-1]

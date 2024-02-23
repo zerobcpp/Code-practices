@@ -1,18 +1,23 @@
 class Solution:
     def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
         res = 0
-        N = len(nums1)
-        def helper(arr, arr2, n, idx):
-            nonlocal res
-            #print(arr, arr2, n)
-            if n == 0:
-                res = max(res, sum(arr) * min(arr2))
-                return 
-            if idx >= N:
-                return 
-            helper(arr+[nums1[idx]], arr2+[nums2[idx]], n-1, idx+1)
-            helper(arr, arr2, n, idx+1)
+        pair = list(zip(nums1, nums2))
+        pair.sort(key = lambda x: x[1], reverse = True)
+        #print(pair)
         
-        helper([], [], k, 0)
-        #print(res)
+        arr1, arr2 = [], []
+        tot = 0
+        for i, j in pair:
+            heappush(arr1, i)   
+            tot += i
+            if len(arr1) > k:
+                tot -= heappop(arr1)
+                
+            if len(arr1) == k:
+                res = max(res, tot * j)
+
         return res
+            
+            
+        
+        

@@ -1,6 +1,8 @@
 class Solution:
     def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
-        x = sx + t
-        y = sy + t
-        
-        return x >= fx and y >= fy
+        if sx == fx and sy == fy and t == 1:
+            return False
+        x = abs(sx - fx)
+        y = abs(sy - fy)
+        #print(x, y)
+        return max(x,y) <= t

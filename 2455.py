@@ -9,10 +9,11 @@ class Solution:
         
         res = 0
         idx = 0
-        #print(graph)
-        for i, v in graph.items():
-            if sum(v) > res:
-                res = sum(v)
-                idx = i
+        # #print(graph)
+        # for i, v in graph.items():
+        #     if sum(v) > res:
+        #         res = sum(v)
+        #         idx = i
+        idx = max(graph, key = lambda x: sum(graph.get(x)))
         
         return idx

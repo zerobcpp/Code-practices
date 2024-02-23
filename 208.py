@@ -1,6 +1,6 @@
 class TreeNode:
     def __init__(self):
-        self.node = [None] * 27
+        self.node = {}
         self.end = False
 class Trie:
 
@@ -11,28 +11,25 @@ class Trie:
     def insert(self, word: str) -> None:
         x = self.root
         for i in word:
-            idx = ord(i) - ord('a')
-            if not x.node[idx]:
-                x.node[idx] = TreeNode()
-            x = x.node[idx]
+            if i not in x.node:
+                x.node[i] = TreeNode()
+            x = x.node[i]
         x.end = True
 
     def search(self, word: str) -> bool:
         x = self.root
         for i in word:
-            idx = ord(i) - ord('a')
-            if not x.node[idx]:
+            if i not in x.node:
                 return False
-            x = x.node[idx]
+            x = x.node[i]
         return x.end
 
     def startsWith(self, prefix: str) -> bool:
         x = self.root
         for i in prefix:
-            idx = ord(i) - ord('a')
-            if not x.node[idx]:
+            if i not in x.node:
                 return False
-            x = x.node[idx]
+            x = x.node[i]
         return True
         
 

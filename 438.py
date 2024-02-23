@@ -9,6 +9,7 @@ class Solution:
         for i in range(size):
             phash[ord(p[i]) - ord('a')] += 1 
             shash[ord(s[i]) - ord('a')] += 1
+        i = -1
         
         for i in range(len(s) - size):
             if phash == shash:

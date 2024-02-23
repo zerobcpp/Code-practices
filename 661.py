@@ -16,6 +16,6 @@ class Solution:
                             cnt += 1
                             sm += img[k][l]
             
-            res[i][j] = sm // cnt
+                res[i][j] = sm // cnt
         
         return res

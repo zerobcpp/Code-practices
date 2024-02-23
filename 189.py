@@ -7,6 +7,7 @@ class Solution:
         3.
         """
         size = len(nums)
+        k %= size
         left = nums[:size-k]
         right = nums[size-k:]
         nums[:] = right + left

@@ -15,7 +15,5 @@ class Solution:
         
         n = len(nodes)
         
-        if n % 2 == 0:
-            return nodes[(n/2)+1]
-        else:
-            return nodes[n//2]
+
+        return nodes[n//2]

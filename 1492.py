@@ -1,21 +1,19 @@
 class Solution:
     def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
-        g = defaultdict(list)
+        g = {i : [] for i in range(n)}
         
         for i in range(n):
             head = manager[i]
-            g[head].append(i)
+            if head != -1:
+                g[head].append(i)
         
         res = 0
-        st = [headID]
-        seen = set()
+        st = [(headID, informTime[headID])]
         while st:
-            cur = st.pop()
-            res += informTime[cur]
+            cur, time = st.pop()
+            res = max(res, time)
             for neigh in g[cur]:
-                if neigh not in seen:
-                    seen.add(neigh)
-                    st.append(neigh)
+                st.append((neigh, time + informTime[neigh]))
         
         return res
         

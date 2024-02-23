@@ -18,9 +18,5 @@ class Solution:
             s7.append((day, res + costs[1]))
             s30.append((day, res + costs[2]))
             res = min(s[0][1], s7[0][1], s30[0][1])
-            print(s)
-            print(s7)
-            print(s30)
-            print()
         
         return res

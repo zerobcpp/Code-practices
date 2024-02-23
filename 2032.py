@@ -3,8 +3,8 @@ class Solution:
         res = ''
         N = len(num)
         
-        for i in range(N):
-            if int(num[:i+1]) & 1:
-                res = max(res, num[:i+1])
+        for i in range(N-1, -1, -1):
+            if int(num[i]) & 1:
+                return num[:i+1]
         
         return res

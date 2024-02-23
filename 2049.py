@@ -3,9 +3,10 @@ class Solution:
         c = []
         N = len(dist)
         
-        for d, s in zip(dist, speed):
-            c.append(d/s)
-        
+#         for d, s in zip(dist, speed):
+#             c.append(d/s)
+        for i in range(N):
+            c.append(dist[i]/speed[i])
         
         res = 0
         c.sort()
