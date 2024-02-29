@@ -1,19 +1,28 @@
-class Solution(object):
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        c = defaultdict(list)
+        #res = []
+        for i in strs:
+            idx = str(sorted(i))
+            c[idx].append(i)
+        
+#         for i, v in c.items():
+#             res.append(v)
+        
+        return c.values()
+    
     def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
-        group = []
-        count = 0
-        while strs:
-            inner = []
+        
+        def convert(strs):
+            arr = [0] * 27
             for i in strs:
-                for j in strs:
-                    if sorted(i) == sorted(j):
-                        inner.append(j)
-                for deletes in inner:
-                    strs.remove(deletes)
-                break
-            group.append(inner)
-        return group
+                idx = ord(i) - ord('a')
+                arr[idx] += 1
+            return tuple(arr)
+        
+        c = defaultdict(list)
+        for i in strs:
+            c[convert(i)].append(i)
+            
+        
+        return c.values()

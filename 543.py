@@ -19,3 +19,23 @@ class Solution:
         
         helper(root)
         return self.count
+    
+    def diameterOfBinaryTree(self, root):
+        left = float('inf')
+        right = -float('inf')
+        
+        st = [(root, 0)]
+        
+        while st:
+            cur, length = st.pop()
+            left = min(length, left)
+            right = max(length, right)
+            
+            if cur.left:
+                st.append((cur.left, length - 1))
+            if cur.right:
+                st.append((cur.right, length + 1))
+        
+        #print(left, right)
+        
+        return -left + right
