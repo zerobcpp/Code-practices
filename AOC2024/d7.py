@@ -47,7 +47,7 @@ if __name__ == '__main__':
     inputs = inputs.split('\n')
 
     b = time.time()
-    with multiprocessing.Pool(1) as pool:
+    with multiprocessing.Pool(12) as pool:
         # Map each line of input to a process for processing
         results = pool.map(loop, inputs)
 
@@ -71,3 +71,5 @@ if __name__ == '__main__':
 
 #ints = 1.082723617553711
 #eval = 17.117719650268555
+
+#avoid using evals for simple ints.
