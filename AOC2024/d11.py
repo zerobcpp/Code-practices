@@ -78,7 +78,7 @@ for i in range(75):
     c = new_c
 
 #print(c)
-print(len(c.keys()))
+#print(len(c.keys()))
 print(sum(c.values()))
 
 
