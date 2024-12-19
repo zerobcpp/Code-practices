@@ -95,7 +95,7 @@ def p2():
             if s[i:i+n] == w:
                 ways += helper(s, i+n, N)
 
-        cache[s, i] = ways
+        cache[s] = ways
         return ways
 
     p2 = 0
