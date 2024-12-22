@@ -23,11 +23,13 @@ dr = {
     3: [1, 0],  #v
 }
 
+from collections import defaultdict
+c = defaultdict()
 
-
-with open('d7.txt', 'r+') as f:
+with open('d.txt', 'r+') as f:
     inputs = f.read()
 
 
 inputs = inputs.split('\n')
+
 
