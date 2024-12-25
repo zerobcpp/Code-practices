@@ -47,6 +47,7 @@ def can(change, price):
     for i in range(N-3):
         k = (change[i], change[i+1], change[i+2], change[i+3])
         c[k] = c.get(k, price[i+4])
+        c[k] = max(c[k], price[i+4])
     
     return c
     
