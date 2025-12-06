@@ -11,6 +11,3 @@ def sieve(n):
         p += 1
     
     return prime
-
-
-sieve(n)

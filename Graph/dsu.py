@@ -26,4 +26,7 @@ class DSU:
             self.rank[xp] += self.rank[yp]
         self.maxRank = max(self.maxRank, self.rank[xp], self.rank[yp])
         return True
+    
+    def __str__(self):
+        return f"Parent: {self.parent}\nRank: {self.rank}\nMaxRank: {self.maxRank}"
         
