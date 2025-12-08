@@ -24,7 +24,7 @@ dr = {
 }
 
 from collections import defaultdict
-c = defaultdict()
+
 
 with open('d.txt', 'r+') as f:
     inputs = f.read()
