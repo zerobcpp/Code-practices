@@ -132,7 +132,7 @@ class SegTreeP:
 
 class Solution:
     def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
-        tree = segTreeP(baskets)
+        tree = SegTreeP(baskets)
         #print(tree)
         res = N = len(baskets)
         for i in fruits:
